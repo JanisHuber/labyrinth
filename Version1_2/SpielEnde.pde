@@ -1,17 +1,17 @@
 void spielEnde() {
-    // Position und Grösse vom Ziel
+  // Position und Grösse vom Ziel
   int greenFieldX = 19 * w;
   int greenFieldY = 1 * w;
   int greenFieldSize = w;
 
   // Überprüfen ob der Kreis komplett im Ziel ist
   if (playerX - playerRadius >= greenFieldX &&
-      playerX + playerRadius <= greenFieldX + greenFieldSize &&
-      playerY - playerRadius >= greenFieldY &&
-      playerY + playerRadius <= greenFieldY + greenFieldSize) {
+    playerX + playerRadius <= greenFieldX + greenFieldSize &&
+    playerY - playerRadius >= greenFieldY &&
+    playerY + playerRadius <= greenFieldY + greenFieldSize) {
     gameEnde = true;
   }
-  
+
   //Game Over
   if (gameEnde) {
     fill(18, 18, 18);
