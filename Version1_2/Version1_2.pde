@@ -6,13 +6,15 @@ int playerX, playerY; // Position der Scheibe
 int playerRadius = 20; // Radius der Scheibe
 boolean isMouseOver = false; // Flag, ob die Maus über der Scheibe ist
 boolean isDragging = false;
+int playerStartX = 500;
+int playerStartY = 300;
+boolean startFound = false;
+boolean gameEnde = false;
 
 void setup() {
   size(1000, 600);
   w = width / cols;
-  frameRate(240);  
-  playerX = 500;
-  playerY = 300;
+  frameRate(240);
 }
 
 void draw() {
@@ -20,4 +22,8 @@ void draw() {
   spielerPosition();
   spielerKollision();
   spielEnde();
+}
+
+void findStartPoint() {
+  
 }
