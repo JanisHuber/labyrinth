@@ -15,7 +15,7 @@ int punkte = 0;
 int rectX = -50;
 int rectY = -50; 
 int rectWidth = 1900;
-int rectHeight = 1100; 
+int rectHeight = 1000; 
 int startTime;     // Zeitstempel wann der Timer gestartet wurde
 int elapsedTime;   // Verstrichene Zeit in Sekunden
 boolean timerRunning = false; // Flag, ob der Timer läuft
@@ -24,7 +24,7 @@ boolean TimerStartInterrupter = false;
 boolean gameOver = false;
 
 void setup() {
-  size(1800, 1000);
+  size(1800, 900);
   w = width / cols;
   frameRate(120);
   noFill();
@@ -49,7 +49,7 @@ void draw() {
   }
   if (timerRunning) {
     elapsedTime = (millis() - startTime) / 1000;
-    fill(0, 0, 0);
+    fill(255, 255, 255);
     textSize(50);
     text(elapsedTime, width - 1500, height - 40);
   }

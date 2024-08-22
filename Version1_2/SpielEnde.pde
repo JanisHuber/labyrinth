@@ -14,6 +14,8 @@ void spielEnde() {
 
   //Game Over
   if (gameEnde) {
+    fill(0, 255, 0, 25);
+    rect(0, 0, width, height);
     fill(255, 255, 255);
     textSize(130);
     textAlign(CENTER, CENTER);
@@ -21,10 +23,11 @@ void spielEnde() {
     noLoop();
     stopTimer();
     punkte = 1000 - elapsedTime * 50 + playerRadius * 5;
-    fill(0, 0, 0);
-    textSize(32);
+    fill(255, 255, 255);
+    textSize(50);
     String text = "Punkte: " + punkte;
-    text(text, width / 2 - 100, height - 50);
+    text(text, width / 2, height - 50);
+    
   }
   if (gameOver == true){
     fill(255, 255, 255);
