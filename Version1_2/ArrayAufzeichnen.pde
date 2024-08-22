@@ -1,7 +1,7 @@
 void zeichneArray() {
-  background(255);
+    background(255);
   
-  // Setzt startFound auf false, um sicherzustellen, dass der Startpunkt korrekt gefunden wird
+  // Setzt startFound auf false um sicherzustellen, dass der Startpunkt korrekt gefunden wird
   
   for (int x = 0; x < cols; x++) {
     for (int y = 0; y < rows; y++) {

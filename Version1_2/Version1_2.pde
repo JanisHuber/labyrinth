@@ -1,3 +1,7 @@
+import java.io.File;
+
+String filePath = "C:\\Users\\janis\\labyrinth\\Version1_2\\highscores.txt";
+
 int cols = 20;  // Anzahl der Spalten
 int rows = 10;  // Anzahl der Zeilen
 int w;          // Breite und Höhe der Quadrate
@@ -23,6 +27,14 @@ boolean TimerStart = false;
 boolean TimerStartInterrupter = false;
 boolean gameOver = false;
 
+String name = "";
+String[] names;
+int[] scores;
+int maxHighscores = 15;
+int insertIndex = 0;
+String inputText = "";
+boolean inputActive = false;
+
 void setup() {
   size(1800, 900);
   w = width / cols;
@@ -31,12 +43,25 @@ void setup() {
   noStroke();
   rect(rectX, rectY, rectWidth, rectHeight);
   
+  names = new String[maxHighscores];
+  scores = new int[maxHighscores];
+  
+  loadHighscores();
 }
 
 void draw() {
   if (TimerStart == true && TimerStartInterrupter == false) {
     startTimer();
     TimerStartInterrupter = true;
+  }
+  fill(200);
+  rect(50, 50, 700, 50);
+  fill(0);
+  text(inputText, 55, 85);
+  if (inputActive) {
+    float cursorX = textWidth(inputText) + 55;
+    stroke(0);
+    line(cursorX, 55, cursorX, 85);
   }
   zeichneArray();
   fill(18, 18, 18); 
@@ -62,10 +87,4 @@ void draw() {
     textSize(50);
     text(elapsedTime, width - 1500, height - 40);
   }
-    
-     
-}
-
-void Punkte() {
-  
 }
