@@ -1,11 +1,9 @@
 int cols = 20;  // Anzahl der Spalten
 int rows = 10;  // Anzahl der Zeilen
 int w;          // Breite und Höhe der Quadrate
-int lives = 3;  // Anzahl Leben
 int playerX, playerY; // Position der Scheibe
 int playerRadius = 40; // Radius der Scheibe
-boolean isMouseOver = false; // Flag, ob die Maus über der Scheibe ist
-boolean isDragging = false;
+boolean isMouseOver = false;
 int playerStartX = 0;
 int playerStartY = 0;
 boolean startFound = false;
@@ -17,8 +15,7 @@ int rectX = -50;
 int rectY = -50; 
 int rectWidth = 1900;
 int rectHeight = 1100; 
-
-int startTime;     // Zeitstempel, wann der Timer gestartet wurde
+int startTime;     // Zeitstempel wann der Timer gestartet wurde
 int elapsedTime;   // Verstrichene Zeit in Sekunden
 boolean timerRunning = false; // Flag, ob der Timer läuft
 boolean TimerStart = false;
