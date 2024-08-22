@@ -45,7 +45,7 @@ void draw() {
   spielEnde();
   if (controlCheating == true) {
     if (playerX - playerRadius < rectX || playerX + playerRadius > rectX + rectWidth || playerY - playerRadius < rectY ||  playerY + playerRadius > rectY + rectHeight) {
-      gameEnde = true;
+      gameOver = true;
       spielEnde();
     }
   }
