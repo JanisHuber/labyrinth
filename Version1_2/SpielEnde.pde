@@ -17,6 +17,7 @@ void spielEnde() {
     if (!gameEndTriggered) {
             endTime = millis(); // Speichere den Zeitpunkt des Spielendes
             gameEndTriggered = true;
+            stopTimer();
         }
 
        if (millis() - endTime > 2200) { // kurz warten
@@ -27,7 +28,6 @@ void spielEnde() {
             textSize(80);
             text("Highscores", 1400, 150);
             noLoop(); // Stoppe die draw-Schleife
-            stopTimer();
 
     
             loadHighscores();

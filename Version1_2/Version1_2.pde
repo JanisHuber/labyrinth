@@ -32,7 +32,7 @@ boolean gameEndTriggered = false;
 String name = "";
 String[] names;
 int[] scores;
-int maxHighscores = 10;
+int maxHighscores = 15;
 int insertIndex = 0;
 String inputText = "";
 boolean inputActive = false;
