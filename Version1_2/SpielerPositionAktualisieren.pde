@@ -8,7 +8,7 @@ void spielerPosition() {
     TimerStart = true;
   }
 
-  if (!mousePressed) {
+  if (!mousePressed || gameEnde == true) {
     isDragging = false;
   }
 

@@ -14,38 +14,53 @@ void spielEnde() {
 
   // Game Ende
   if (gameEnde) {
-    fill(0, 255, 0, 25);
-    rect(0, 0, width, height);
+    if (!gameEndTriggered) {
+            endTime = millis(); // Speichere den Zeitpunkt des Spielendes
+            gameEndTriggered = true;
+        }
+
+       if (millis() - endTime > 2200) { // kurz warten
+            background(18); // Grau einfärben
+            fill(255);
+            rect(1000, 50, width - 1050, height - 100);
+            fill(0);
+            textSize(80);
+            text("Highscores", 1400, 150);
+            noLoop(); // Stoppe die draw-Schleife
+            stopTimer();
+
     
-    fill(255, 255, 255);
-    textSize(130);
-    textAlign(CENTER, CENTER);
-    text("Congratulations!", width / 2, height / 2);
-    
-    stopTimer(); // Timer stoppen
-    punkte = 1000 - elapsedTime * 50 + playerRadius * 5;
-    
-    // Highscores
-    fill(255, 255, 255);
-    textSize(50);
-    text("Punkte: " + punkte, width / 2, height - 50);
-    
-    loadHighscores();
-    addHighscore(name, punkte);
-    noLoop();
-    
-    // Zeige die Highscores an
-    fill(255, 0, 0);
-    textSize(30);
-    textAlign(LEFT, TOP); // Justiere die Ausrichtung entsprechend
-    
-    for (int i = 0; i < maxHighscores; i++) {
-      if (names[i] != null) {
-        text((i + 1) + ". " + names[i] + ": " + scores[i], 50, 50 + i * 40);
+            loadHighscores();
+            addHighscore(name, punkte);
+            
+            // Zeige die Highscores an
+            fill(0, 0, 0);
+            textSize(50);
+            
+            for (int i = 0; i < maxHighscores; i++) {
+              if (names[i] != null) {
+                text((i + 1) + ". " + names[i] + ": " + scores[i], 1150, 250 + i * 40);
+              }
+            }
+            
+            saveHighscores(); // Speichern der Highscores nach dem Update
       }
-    }
-    
-    saveHighscores(); // Speichern der Highscores nach dem Update
+        else {
+          fill(0, 255, 0, 30);
+          rect(0, 0, width, height);
+          fill(255, 255, 255);
+          textSize(130);
+          textAlign(CENTER, CENTER);
+          text("Congratulations!", width / 2, height / 2);
+          punkte = 1000 - elapsedTime * 50 + playerRadius * 5;
+          fill(255, 255, 255);
+          textSize(50);
+          String text = "Punkte: " + punkte;
+          text(text, width / 2, height - 50);
+
+       }    
+
+   
   }
   
   // Game Over

@@ -34,5 +34,8 @@ void spielerKollision() {
     fill(255, 0, 0, redScreen);
     rect(0, 0, width, height);
     redScreen = max(0, redScreen - 4);
+    if (gameEnde == true) {
+      redScreen = 0;
+    }
   }
 }

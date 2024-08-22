@@ -6,7 +6,7 @@ int cols = 20;  // Anzahl der Spalten
 int rows = 10;  // Anzahl der Zeilen
 int w;          // Breite und Höhe der Quadrate
 int playerX, playerY; // Position der Scheibe
-int playerRadius = 40; // Radius der Scheibe
+int playerRadius = 40;
 boolean isMouseOver = false;
 boolean isDragging = false;
 int playerStartX = 0;
@@ -27,10 +27,12 @@ boolean TimerStart = false;
 boolean TimerStartInterrupter = false;
 boolean gameOver = false;
 
+boolean gameEndTriggered = false;
+
 String name = "";
 String[] names;
 int[] scores;
-int maxHighscores = 15;
+int maxHighscores = 10;
 int insertIndex = 0;
 String inputText = "";
 boolean inputActive = false;
@@ -54,15 +56,6 @@ void draw() {
     startTimer();
     TimerStartInterrupter = true;
   }
-  fill(200);
-  rect(50, 50, 700, 50);
-  fill(0);
-  text(inputText, 55, 85);
-  if (inputActive) {
-    float cursorX = textWidth(inputText) + 55;
-    stroke(0);
-    line(cursorX, 55, cursorX, 85);
-  }
   zeichneArray();
   fill(18, 18, 18); 
     rect(850, 100, 200, 500);
@@ -71,6 +64,21 @@ void draw() {
       gameOver = true;
       spielEnde();
   }
+  fill(200); // Textfeld-Hintergrundfarbe
+  rect(50, 50, 700, 50); // Textfeld Rechteck
+
+  // Zeichne den eingegebenen Text
+  fill(0); // Textfarbe
+  textSize(32); // Textgröße anpassen
+  text(inputText, 55, 85); // Zeige den eingegebenen Text an
+
+  // Zeichne den Cursor, wenn das Textfeld aktiv ist
+  if (inputActive) {
+    float cursorX = textWidth(inputText) + 55; // Cursor-Position basierend auf dem Text
+    stroke(0); // Cursor-Farbe
+    line(cursorX, 55, cursorX, 85); // Zeichne den Cursor als Linie
+  }
+  
   spielerPosition();
   spielerKollision();
   spielEnde();
