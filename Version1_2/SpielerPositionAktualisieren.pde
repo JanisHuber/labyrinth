@@ -5,6 +5,7 @@ void spielerPosition() {
   if (isMouseOver && mousePressed) {
     isDragging = true;
     controlCheating = true;
+    TimerStart = true;
   }
 
   if (!mousePressed) {

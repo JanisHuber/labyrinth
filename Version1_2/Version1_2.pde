@@ -12,11 +12,17 @@ boolean startFound = false;
 boolean gameEnde = false;
 int endTime = 0;
 boolean controlCheating = false;
-
+int punkte = 0;
 int rectX = -50;
 int rectY = -50; 
 int rectWidth = 1900;
 int rectHeight = 1100; 
+
+int startTime;     // Zeitstempel, wann der Timer gestartet wurde
+int elapsedTime;   // Verstrichene Zeit in Sekunden
+boolean timerRunning = false; // Flag, ob der Timer läuft
+boolean TimerStart = false;
+boolean TimerStartInterrupter = false;
 
 void setup() {
   size(1800, 1000);
@@ -28,6 +34,10 @@ void setup() {
 }
 
 void draw() {
+  if (TimerStart == true && TimerStartInterrupter == false) {
+    startTimer();
+    TimerStartInterrupter = true;
+  }
   zeichneArray();
   spielerPosition();
   spielerKollision();
@@ -38,4 +48,14 @@ void draw() {
       spielEnde();
     }
   }
+  if (timerRunning) {
+    elapsedTime = (millis() - startTime) / 1000;
+    fill(0, 0, 0);
+    textSize(50);
+    text(elapsedTime, width - 1500, height - 40);
+  }
+}
+
+void Punkte() {
+  
 }
