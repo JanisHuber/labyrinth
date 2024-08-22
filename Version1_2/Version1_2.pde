@@ -4,6 +4,7 @@ int w;          // Breite und Höhe der Quadrate
 int playerX, playerY; // Position der Scheibe
 int playerRadius = 40; // Radius der Scheibe
 boolean isMouseOver = false;
+boolean isDragging = false;
 int playerStartX = 0;
 int playerStartY = 0;
 boolean startFound = false;
