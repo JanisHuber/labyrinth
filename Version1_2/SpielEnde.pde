@@ -14,10 +14,10 @@ void spielEnde() {
 
   //Game Over
   if (gameEnde) {
-    fill(18, 18, 18);
+    fill(255, 255, 255);
     textSize(130);
     textAlign(CENTER, CENTER);
-    text("Ziel erreicht!", width / 2, height / 2);
+    text("Game Over!", width / 2, height / 2);
     noLoop();
   }
 }

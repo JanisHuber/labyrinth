@@ -1,4 +1,5 @@
 void spielerPosition() {
+  
   isMouseOver = dist(mouseX, mouseY, playerX, playerY) < playerRadius;
 
   if (isMouseOver && mousePressed) {
