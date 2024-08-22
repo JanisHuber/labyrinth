@@ -19,7 +19,5 @@ void addHighscore(String newName, int newScore) {
     // Füge den neuen Highscore ein
     names[insertIndex] = newName;
     scores[insertIndex] = newScore;
-    println("Inserting at index: " + insertIndex);
-    println("New name: " + newName + ", New score: " + newScore);
   }
 }

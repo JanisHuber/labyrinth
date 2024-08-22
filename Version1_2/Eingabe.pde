@@ -26,6 +26,7 @@ void mousePressed() {
   // Prüfen, ob auf das Textfeld geklickt wurde
   if (mouseX > 50 && mouseX < 750 && mouseY > 50 && mouseY < 100) {
     inputActive = true;
+    inputErklärungOn = false;
   } else {
     inputActive = false;
   }

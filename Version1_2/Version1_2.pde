@@ -26,13 +26,14 @@ boolean timerRunning = false; // Flag, ob der Timer läuft
 boolean TimerStart = false;
 boolean TimerStartInterrupter = false;
 boolean gameOver = false;
+boolean inputErklärungOn = true;
 
 boolean gameEndTriggered = false;
 
 String name = "";
 String[] names;
 int[] scores;
-int maxHighscores = 15;
+int maxHighscores = 10;
 int insertIndex = 0;
 String inputText = "";
 boolean inputActive = false;
@@ -71,7 +72,10 @@ void draw() {
   fill(0); // Textfarbe
   textSize(32); // Textgröße anpassen
   text(inputText, 55, 85); // Zeige den eingegebenen Text an
-
+  String InputErklärung = "Tippe deinen Namen ein...";
+  if (inputErklärungOn == true){
+    text(InputErklärung, 55, 85);
+  }
   // Zeichne den Cursor, wenn das Textfeld aktiv ist
   if (inputActive) {
     float cursorX = textWidth(inputText) + 55; // Cursor-Position basierend auf dem Text

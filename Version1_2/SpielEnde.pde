@@ -26,23 +26,28 @@ void spielEnde() {
             rect(1000, 50, width - 1050, height - 100);
             fill(0);
             textSize(80);
-            text("Highscores", 1400, 150);
+            text("Highscores", 1375, 140);
             noLoop(); // Stoppe die draw-Schleife
-
-    
             loadHighscores();
             addHighscore(name, punkte);
-            
-            // Zeige die Highscores an
+            fill(255);
+            textAlign(CENTER, CENTER);
+            textSize(130);
+            text("Deine Punkte:", 500, 175);
+            fill(255);
+            textAlign(CENTER, CENTER);
+            textSize(130);
+            text(punkte, 500, 300);
+            fill(0, 0, 0);
+            textAlign(LEFT, CENTER);
+            textSize(50);
             fill(0, 0, 0);
             textSize(50);
-            
             for (int i = 0; i < maxHighscores; i++) {
               if (names[i] != null) {
-                text((i + 1) + ". " + names[i] + ": " + scores[i], 1150, 250 + i * 40);
+                text((i + 1) + ". " + names[i] + " : " + scores[i], 1080, 280 + i * 50);
               }
             }
-            
             saveHighscores(); // Speichern der Highscores nach dem Update
       }
         else {
@@ -53,6 +58,9 @@ void spielEnde() {
           textAlign(CENTER, CENTER);
           text("Congratulations!", width / 2, height / 2);
           punkte = 1000 - elapsedTime * 50 + playerRadius * 5;
+          if (punkte < 0) {
+            punkte = 0;
+          }
           fill(255, 255, 255);
           textSize(50);
           String text = "Punkte: " + punkte;
