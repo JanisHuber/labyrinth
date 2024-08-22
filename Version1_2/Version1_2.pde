@@ -30,6 +30,7 @@ void setup() {
   noFill();
   noStroke();
   rect(rectX, rectY, rectWidth, rectHeight);
+  
 }
 
 void draw() {
@@ -38,6 +39,13 @@ void draw() {
     TimerStartInterrupter = true;
   }
   zeichneArray();
+  fill(18, 18, 18); 
+    rect(850, 100, 200, 500);
+    
+  if (playerX > 850 && playerX < 1050 && playerY > 100 && playerY < 600) {
+      gameOver = true;
+      spielEnde();
+  }
   spielerPosition();
   spielerKollision();
   spielEnde();
@@ -46,6 +54,7 @@ void draw() {
       gameOver = true;
       spielEnde();
     }
+    
   }
   if (timerRunning) {
     elapsedTime = (millis() - startTime) / 1000;
@@ -53,6 +62,8 @@ void draw() {
     textSize(50);
     text(elapsedTime, width - 1500, height - 40);
   }
+    
+     
 }
 
 void Punkte() {
