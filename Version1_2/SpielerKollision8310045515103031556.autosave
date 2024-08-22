@@ -1,0 +1,32 @@
+color playerColor = color(0, 0, 255); // Blau für den Spieler
+color obstacleColor = color(18, 18, 18); // Schwarz für Hindernisse
+
+void spielerKollisiondown() {
+  boolean collisionDetected = false;
+  
+ 
+  for (int dx = -playerRadius; dx <= playerRadius; dx++) {
+    for (int dy = -playerRadius; dy <= playerRadius; dy++) {
+      int x = playerX + dx;
+      int y = playerY + dy;
+      
+      if (dist(playerX, playerY, x, y) <= playerRadius) { // Prüfen, ob der aktuelle Punkt innerhalb des Kreises liegt
+        if (get(x, y) == obstacleColor) { // Ob Farbe 18, 18, 18
+          collisionDetected = true;
+          break;
+        }
+      }
+    }
+    if (collisionDetected == true) break;
+  }
+
+  // Wenn eine Kollision erkannt wurde, führen wir die Aktion aus
+  if (collisionDetected) {
+    playerRadius = max(playerRadius - 2, 10); // Spielergröße verkleinern
+    
+    if (playerRadius <= 10) { // Falls Spielergröße minimal ist, Spiel beenden
+      gameEnde = true;
+      spielEnde();
+    }
+  }
+}

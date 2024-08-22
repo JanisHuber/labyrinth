@@ -22,7 +22,7 @@ void spielerKollision() {
     playerRadius = max(playerRadius - 2, 10); // Spielergrösse verkleinern
     
     if (playerRadius <= 10) {
-      gameEnde = true;
+      gameOver = true;
       spielEnde();
     }
   }
