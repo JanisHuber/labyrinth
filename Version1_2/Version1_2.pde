@@ -11,11 +11,20 @@ int playerStartY = 0;
 boolean startFound = false;
 boolean gameEnde = false;
 int endTime = 0;
+boolean controlCheating = false;
+
+int rectX = -50;
+int rectY = -50; 
+int rectWidth = 1900;
+int rectHeight = 1100; 
 
 void setup() {
   size(1800, 1000);
   w = width / cols;
-  frameRate(60);
+  frameRate(120);
+  noFill();
+  noStroke();
+  rect(rectX, rectY, rectWidth, rectHeight);
 }
 
 void draw() {
@@ -23,4 +32,10 @@ void draw() {
   spielerPosition();
   spielerKollision();
   spielEnde();
+  if (controlCheating == true) {
+    if (playerX - playerRadius < rectX || playerX + playerRadius > rectX + rectWidth || playerY - playerRadius < rectY ||  playerY + playerRadius > rectY + rectHeight) {
+      gameEnde = true;
+      spielEnde();
+    }
+  }
 }
