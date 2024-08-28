@@ -6,25 +6,25 @@ void keyPressed() {
         inputText = inputText.substring(0, inputText.length() - 1);
       }
     } else if (keyCode == ENTER) {
-      // Verarbeite die Eingabe, wenn Enter gedrückt wird
       processInput();
     } else {
-      // Füge den eingegebenen Text hinzu
       inputText += key;
     }
   }
 }
 
 void keyReleased() {
-  // Deaktivieren des Textfeldes bei ESCAPE
   if (key == ESC) {
     inputActive = false;
   }
 }
 
 void mousePressed() {
-  // Prüfen, ob auf das Textfeld geklickt wurde
-  if (mouseX > 50 && mouseX < 750 && mouseY > 50 && mouseY < 100) {
+  
+  if (restartButton.isMouseOver()) { //Reset button
+    reset = true;
+  }
+  if (mouseX > 50 && mouseX < 750 && mouseY > 50 && mouseY < 100) { //EingabeFeld
     inputActive = true;
     inputErklärungOn = false;
   } else {

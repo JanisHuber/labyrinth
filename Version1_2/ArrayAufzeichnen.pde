@@ -1,8 +1,6 @@
 void zeichneArray() {
     background(255);
   
-  // Setzt startFound auf false um sicherzustellen, dass der Startpunkt korrekt gefunden wird
-  
   for (int x = 0; x < cols; x++) {
     for (int y = 0; y < rows; y++) {
       if (y == 1 && (x == 18 || x == 17 || x == 16 || x == 15 || x == 14 || x == 13) ||
@@ -23,7 +21,7 @@ void zeichneArray() {
     } else if (y == 1 && x == 19) {
         fill(color(0, 255, 0)); // Grün
     } else {
-        fill(color(18, 18, 18)); // Weiß
+        fill(color(18, 18, 18)); // 
       }
       noStroke();
       rect(x * w, y * w, w, w); // Immer das Quadrat zeichnen

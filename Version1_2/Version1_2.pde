@@ -38,61 +38,39 @@ int insertIndex = 0;
 String inputText = "";
 boolean inputActive = false;
 
+boolean reset = false;
+Button restartButton;
+boolean stopPlayerHighscore = false;
+int runTime = 0;
+
 void setup() {
   size(1800, 900);
   w = width / cols;
   frameRate(120);
-  noFill();
+  noFill();                                    
   noStroke();
-  rect(rectX, rectY, rectWidth, rectHeight);
-  
-  names = new String[maxHighscores];
+  rect(rectX, rectY, rectWidth, rectHeight); // CheatRechteck
+  names = new String[maxHighscores];         //Highscores
   scores = new int[maxHighscores];
-  
   loadHighscores();
+  restartButton = new Button("Restart", width/2 - 50, height - 100, 150, 50);
 }
 
 void draw() {
+  if (reset) {
+    resetSketch();  // Setze alles zurück
+    reset = false;  // Schleife unterbrechen
+  }
+  
   if (TimerStart == true && TimerStartInterrupter == false) {
     startTimer();
     TimerStartInterrupter = true;
   }
   zeichneArray();
-  fill(18, 18, 18); 
-    rect(850, 100, 200, 500);
-    
-  if (playerX > 850 && playerX < 1050 && playerY > 100 && playerY < 600) {
-      gameOver = true;
-      spielEnde();
-  }
-  fill(200); // Textfeld-Hintergrundfarbe
-  rect(50, 50, 700, 50); // Textfeld Rechteck
-
-  // Zeichne den eingegebenen Text
-  fill(0); // Textfarbe
-  textSize(32); // Textgröße anpassen
-  text(inputText, 55, 85); // Zeige den eingegebenen Text an
-  String InputErklärung = "Tippe deinen Namen ein...";
-  if (inputErklärungOn == true){
-    text(InputErklärung, 55, 85);
-  }
-  // Zeichne den Cursor, wenn das Textfeld aktiv ist
-  if (inputActive) {
-    float cursorX = textWidth(inputText) + 55; // Cursor-Position basierend auf dem Text
-    stroke(0); // Cursor-Farbe
-    line(cursorX, 55, cursorX, 85); // Zeichne den Cursor als Linie
-  }
-  
+  textFeld();
   spielerPosition();
   spielerKollision();
   spielEnde();
-  if (controlCheating == true) {
-    if (playerX - playerRadius < rectX || playerX + playerRadius > rectX + rectWidth || playerY - playerRadius < rectY ||  playerY + playerRadius > rectY + rectHeight) {
-      gameOver = true;
-      spielEnde();
-    }
-    
-  }
   if (timerRunning) {
     elapsedTime = (millis() - startTime) / 1000;
     fill(255, 255, 255);

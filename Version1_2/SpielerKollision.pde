@@ -1,6 +1,12 @@
 int redScreen = 0;
 
 void spielerKollision() {
+  if (controlCheating == true) {
+    if (playerX - playerRadius < rectX || playerX + playerRadius > rectX + rectWidth || playerY - playerRadius < rectY ||  playerY + playerRadius > rectY + rectHeight) {
+      gameOver = true;
+      spielEnde();
+    }
+  }
   boolean collisionDetected = false;
   int test = 0 - playerRadius;
 

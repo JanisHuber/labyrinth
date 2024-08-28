@@ -1,40 +1,56 @@
-int buttonX = 350;
-int buttonY = 400;
-int buttonWidth = 100; 
-int buttonHeight = 50; 
-int y = 0;
-int x = 0;
-
-
-void drawButton() {
-  fill(0, 255, 0);  // Farbe des Knopfes
-  rect(buttonX, buttonY, buttonWidth, buttonHeight);  // Zeichne den Knopf
-  fill(255,0, 0);
-  textSize(24);
-  textAlign(CENTER, CENTER);
-  text("Restart", buttonX + buttonWidth / 2, buttonY + buttonHeight / 2);  // Text im Knopf
- }
-
-void mousepressed() {
-  // Prüfe, ob der Knopf angeklickt wurde
-  if (mouseX > buttonX && mouseX < buttonX + buttonWidth && mouseY > buttonY && mouseY < buttonY + buttonHeight) {
-    resetGame();// Funktion, die das Spiel zurücksetzt und zum Start führt
-    //loop();
-  }
+void resetSketch() {
+  loop();
+  playerRadius = 40;
+  isMouseOver = false;
+  isDragging = false;
+  playerStartX = 0;
+  playerStartY = 0;
+  startFound = false;
+  gameEnde = false;
+  endTime = 0;
+  controlCheating = false;
+  punkte = 0;
+  rectX = -50;
+  rectY = -50; 
+  rectWidth = 1900;
+  rectHeight = 1000; 
+  startTime = 0;     // Zeitstempel wann der Timer gestartet wurde
+  timerRunning = false; // Flag, ob der Timer läuft
+  TimerStart = false;
+  TimerStartInterrupter = false;
+  gameOver = false;
+  inputErklärungOn = true;
+  
+  gameEndTriggered = false;
+  reset = false;
+  
+  stopPlayerHighscore = false;
+  insertIndex = -1;
+  runTime ++;
 }
-void resetGame() {
-  for (int x = 0; x < cols; x++) {
-    for (int y = 0; y < rows; y++) {
-      // Bedingung für die Startposition
-      if (y == 3 && x == 0) { // Beispiel: Startposition ist (0, 1)
-        playerStartX = x * w + w / 2; // Mitte des Quadrats
-        playerStartY = y * w + w / 2; // Mitte des Quadrats
-        playerX = playerStartX;
-        playerY = playerStartY;
-        playerRadius = 40;
-        return;
 
-      }
-    }
+class Button {
+  String label = "Restart";
+  float x, y, w, h;
+  
+  Button(String label, float x, float y, float w, float h) {
+    this.label = label;
+    this.x = x;
+    this.y = y;
+    this.w = w;
+    this.h = h;
+  }
+  
+  void display() {
+    textSize(32);
+    fill(150);
+    rect(x, y, w, h);
+    fill(255);
+    textAlign(CENTER, CENTER);
+    text(label, x + w/2, y + h/2);
+  }
+  
+  boolean isMouseOver() {
+    return mouseX > x && mouseX < x + w && mouseY > y && mouseY < y + h;
   }
 }

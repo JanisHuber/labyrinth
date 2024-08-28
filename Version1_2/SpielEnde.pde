@@ -21,15 +21,16 @@ void spielEnde() {
         }
 
        if (millis() - endTime > 2200) { // kurz warten
-            background(18); // Grau einfärben
+            background(18);
             fill(255);
             rect(1000, 50, width - 1050, height - 100);
             fill(0);
             textSize(80);
             text("Highscores", 1375, 140);
-            noLoop(); // Stoppe die draw-Schleife
             loadHighscores();
-            addHighscore(name, punkte);
+            if (stopPlayerHighscore == false) {
+              addHighscore(name, punkte);
+            }
             fill(255);
             textAlign(CENTER, CENTER);
             textSize(130);
@@ -48,7 +49,11 @@ void spielEnde() {
                 text((i + 1) + ". " + names[i] + " : " + scores[i], 1080, 280 + i * 50);
               }
             }
-            saveHighscores(); // Speichern der Highscores nach dem Update
+            if (stopPlayerHighscore == false) {
+              saveHighscores(); // Speichern der Highscores nach dem Update
+              stopPlayerHighscore = true;
+            }
+            restartButton.display();
       }
         else {
           fill(0, 255, 0, 30);
@@ -78,6 +83,6 @@ void spielEnde() {
     textAlign(CENTER, CENTER);
     text("Game Over!", width / 2, height / 2);
     stopTimer(); // Timer stoppen
-    noLoop(); // Zeichenschleife stoppen
+    restartButton.display();
   }
 }
