@@ -4,7 +4,7 @@ void spielerKollision() {
   if (controlCheating == true) {
     if (playerX - playerRadius < rectX || playerX + playerRadius > rectX + rectWidth || playerY - playerRadius < rectY ||  playerY + playerRadius > rectY + rectHeight) {
       gameOver = true;
-      spielEnde();
+      spielEnde(0);
     }
   }
   boolean collisionDetected = false;
@@ -32,7 +32,7 @@ void spielerKollision() {
 
     if (playerRadius <= 10) {
       gameOver = true;
-      spielEnde();
+      spielEnde(0);
     }
   }
 

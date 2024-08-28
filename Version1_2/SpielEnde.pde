@@ -1,7 +1,12 @@
-void spielEnde() {
+import processing.sound.*;
+SoundFile file;
+boolean rightsoundPlayed = false;
+boolean wrongsoundPlayed = false;
+
+void spielEnde(int coordinates) {
   // Position und Grösse vom Ziel
   int greenFieldX = 19 * w;
-  int greenFieldY = 1 * w;
+  int greenFieldY = coordinates * w;
   int greenFieldSize = w;
 
   // Überprüfen, ob der Kreis komplett im Ziel ist
@@ -34,11 +39,11 @@ void spielEnde() {
             fill(255);
             textAlign(CENTER, CENTER);
             textSize(130);
-            text("Deine Punkte:", 500, 175);
+            text("Deine Punkte:", 500, 225);
             fill(255);
             textAlign(CENTER, CENTER);
             textSize(130);
-            text(punkte, 500, 300);
+            text(punkte, 500, 350);
             fill(0, 0, 0);
             textAlign(LEFT, CENTER);
             textSize(50);
@@ -53,9 +58,17 @@ void spielEnde() {
               saveHighscores(); // Speichern der Highscores nach dem Update
               stopPlayerHighscore = true;
             }
+            restartButton = new Button("Restart", width/2 - 525, height - 400, 250, 100);
             restartButton.display();
+            gameInterrupter = true;
       }
         else {
+         if (!rightsoundPlayed) {
+            file = new SoundFile(this, "goodresult-82807.wav");
+            file.amp(0.5);
+            file.play();
+            rightsoundPlayed = true;
+         }
           fill(0, 255, 0, 30);
           rect(0, 0, width, height);
           fill(255, 255, 255);
@@ -70,6 +83,7 @@ void spielEnde() {
           textSize(50);
           String text = "Punkte: " + punkte;
           text(text, width / 2, height - 50);
+          gameInterrupter = true;
 
        }    
 
@@ -78,11 +92,20 @@ void spielEnde() {
   
   // Game Over
   if (gameOver) {
+    if (!wrongsoundPlayed) {
+      file = new SoundFile (this, "wah-wah-sad-trombone-6347.wav");
+      file.amp(0.5);
+      file.play();
+      wrongsoundPlayed = true;
+    }
     fill(255, 255, 255);
-    textSize(130);
+    textSize(160);
     textAlign(CENTER, CENTER);
     text("Game Over!", width / 2, height / 2);
     stopTimer(); // Timer stoppen
+    restartButton.display();
+    gameInterrupter = true;
+    restartButton = new Button("Restart", width/2 - 125, height - 200, 250, 100);
     restartButton.display();
   }
 }

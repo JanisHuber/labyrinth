@@ -12,7 +12,7 @@ void spielerPosition() {
     isDragging = false;
   }
 
-  if (isDragging) {
+  if (isDragging == true && gameInterrupter == false) {
     playerX = mouseX;
     playerY = mouseY;
   }

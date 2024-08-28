@@ -20,6 +20,8 @@ void resetSketch() {
   TimerStartInterrupter = false;
   gameOver = false;
   inputErklärungOn = true;
+  rightsoundPlayed = false;
+  wrongsoundPlayed = false;
   
   gameEndTriggered = false;
   reset = false;
@@ -27,6 +29,7 @@ void resetSketch() {
   stopPlayerHighscore = false;
   insertIndex = -1;
   runTime ++;
+  gameInterrupter = false;
 }
 
 class Button {
